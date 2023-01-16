@@ -5,7 +5,7 @@ import {
   StyledSubmitBtn,
 } from './Searchbar.styled';
 
-const Searchbar = () => {
+const Searchbar = ({ onSubmit }) => {
   const [search, setSearch] = useState('');
 
   const handlerInputChange = evt => {
@@ -13,8 +13,16 @@ const Searchbar = () => {
     setSearch(query);
   };
 
+  const handlerSubmitForm = evt => {
+    evt?.preventDefault();
+    const { value } = evt?.target.elements.search;
+    const query = value || '';
+    onSubmit(query);
+    setSearch('');
+  };
+
   return (
-    <StyledSearchbar>
+    <StyledSearchbar onSubmit={handlerSubmitForm}>
       <StyledInput
         type="text"
         name="search"
@@ -25,7 +33,9 @@ const Searchbar = () => {
         onChange={handlerInputChange}
         required
       />
-      <StyledSubmitBtn type="submit" disabled={!search} />
+      <StyledSubmitBtn type="submit" disabled={!search}>
+        Search
+      </StyledSubmitBtn>
     </StyledSearchbar>
   );
 };
