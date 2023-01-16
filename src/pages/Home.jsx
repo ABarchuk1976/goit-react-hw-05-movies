@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { API_ACTIONS } from 'components/constants/api.constants.js';
 import { useState, useEffect } from 'react';
-import { fetchAPIMovies } from 'components/services/common-api.service.js';
+import { API_ACTIONS } from 'components/constants/api.constants.js';
+import { fetchAPIMovies } from 'components/services/common-api.service';
+import MovieList from 'components/MovieList';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -14,13 +14,7 @@ export const Home = () => {
 
   return (
     <main>
-      <ul>
-        {movies.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`movies/${id}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={movies} />
     </main>
   );
 };

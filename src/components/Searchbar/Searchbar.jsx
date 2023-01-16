@@ -17,7 +17,7 @@ const Searchbar = ({ onSubmit }) => {
     evt?.preventDefault();
     const { value } = evt?.target.elements.search;
     const query = value || '';
-    onSubmit(query);
+    onSubmit({ query });
     setSearch('');
   };
 

@@ -14,8 +14,6 @@ export const fetchAPIMovies = async (action, search = '') => {
       ? `${API}/trending/${MEDIA_TYPE}/${TIME_WINDOWS}?api_key=${KEY}`
       : `${API}/search/${MEDIA_TYPE}?api_key=${KEY}&query=${search}`;
 
-  console.log('Search string: ', URLString);
-
   try {
     const resolve = await axios.get(URLString);
 
@@ -25,10 +23,8 @@ export const fetchAPIMovies = async (action, search = '') => {
         'Search list is empty or service is temporarily unavailable .'
       );
     }
-    console.log(resolve.data);
-
     return resolve.data;
   } catch (error) {
-    toast(error.message);
+    toast.error(error.message);
   }
 };
