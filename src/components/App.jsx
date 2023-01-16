@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Home } from 'pages/Home';
 import { Movies } from 'pages/Movies';
+import { MovieDetails } from 'pages/MovieDetails';
 
 export const App = () => {
   return (
@@ -13,7 +14,7 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
-          <Route path="movies/:movieId" element={<div>Movies</div>}>
+          <Route path="movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<div>Cast</div>} />
             <Route path="reviews" element={<div>Reviews</div>} />
           </Route>

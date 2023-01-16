@@ -5,3 +5,4 @@ export const MEDIA_TYPE = 'movie';
 export const TIME_WINDOWS = 'day';
 export const API = 'https://api.themoviedb.org/3';
 export const API_ACTIONS = { TRENDING: 'trending', SEARCH: 'search' };
+export const API_IMG_POSTER = 'https://image.tmdb.org/t/p/w500';

@@ -19,9 +19,52 @@ export const fetchAPIMovies = async (action, search = '') => {
 
     console.log(resolve.status);
     if (resolve.status !== 200 || !resolve) {
-      throw new Error(
-        'Search list is empty or service is temporarily unavailable .'
-      );
+      throw new Error('Service is temporarily unavailable .');
+    }
+    return resolve.data;
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const fetchAPIByID = async movieId => {
+  const URLString = `${API}/movie/${movieId}?api_key=${KEY}`;
+  try {
+    const resolve = await axios.get(URLString);
+
+    console.log(resolve.status);
+    if (resolve.status !== 200 || !resolve) {
+      throw new Error('Service is temporarily unavailable .');
+    }
+    return resolve.data;
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const fetchReviewsByID = async movieId => {
+  const URLString = `${API}/movie/${movieId}/reviews?api_key=${KEY}`;
+  try {
+    const resolve = await axios.get(URLString);
+
+    console.log(resolve.status);
+    if (resolve.status !== 200 || !resolve) {
+      throw new Error('Service is temporarily unavailable .');
+    }
+    return resolve.data;
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const fetchCastByID = async movieId => {
+  const URLString = `${API}/movie/${movieId}/credits?api_key=${KEY}`;
+  try {
+    const resolve = await axios.get(URLString);
+
+    console.log(resolve.status);
+    if (resolve.status !== 200 || !resolve) {
+      throw new Error('Service is temporarily unavailable .');
     }
     return resolve.data;
   } catch (error) {

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { API_ACTIONS } from 'components/constants/api.constants.js';
 import { fetchAPIMovies } from 'components/services/common-api.service';
 import MovieList from 'components/MovieList';
+import { StyledMain } from 'components/SharedLayout/SharedLayout.styled';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -13,8 +14,8 @@ export const Home = () => {
   }, []);
 
   return (
-    <main>
+    <StyledMain>
       <MovieList movies={movies} />
-    </main>
+    </StyledMain>
   );
 };
