@@ -3,17 +3,18 @@ import styled from 'styled-components';
 export const StyledMovieCard = styled.article`
   display: flex;
   max-width: 1600px;
-  margin: 1rem auto;
+  margin: 1rem auto 0 auto;
 `;
 
 export const StyledPoster = styled.aside`
-  width: 200px;
+  width: 500px;
   height: fit-content;
 `;
 
 export const StyledDetails = styled.div`
   padding: 1rem;
-  font-size: 0.5rem;
+  padding-bottom: 0;
+  font-size: 0.75rem;
   color: black;
 `;
 
@@ -31,4 +32,10 @@ export const StyledMovieSubtitle = styled.h2`
 
 export const StyledText = styled.p`
   margin-bottom: 1rem;
+`;
+
+export const StyledAdditional = styled.div`
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-top: 1rem;
 `;

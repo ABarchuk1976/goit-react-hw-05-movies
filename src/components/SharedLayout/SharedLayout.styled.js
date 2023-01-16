@@ -10,7 +10,7 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
-  box-shadow: 0.5rem 0.5rem 0.25rem 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0.25rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.4);
 `;
 
 export const StyledMain = styled.main`

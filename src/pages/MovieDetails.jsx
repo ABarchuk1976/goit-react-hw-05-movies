@@ -13,6 +13,7 @@ import {
   StyledMovieTitle,
   StyledMovieSubtitle,
   StyledText,
+  StyledAdditional,
 } from './MovieDetails.styled.js';
 
 export const MovieDetails = () => {
@@ -73,8 +74,8 @@ export const MovieDetails = () => {
         </StyledDetails>
       </StyledMovieCard>
 
-      <div>
-        <p>Additional information</p>
+      <StyledAdditional>
+        <StyledText>Additional information</StyledText>
         <ul>
           <li>
             <Link to="cast">Cast</Link>
@@ -83,7 +84,7 @@ export const MovieDetails = () => {
             <Link to="reviews">Reviews</Link>
           </li>
         </ul>
-      </div>
+      </StyledAdditional>
     </>
   );
 };

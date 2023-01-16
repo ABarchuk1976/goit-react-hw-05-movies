@@ -5,7 +5,6 @@ import { API_ACTIONS } from 'components/constants/api.constants';
 import { fetchAPIMovies } from 'components/services/common-api.service';
 import { toast } from 'react-toastify';
 import MovieList from 'components/MovieList';
-import { StyledMain } from 'components/SharedLayout/SharedLayout.styled';
 
 export const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,9 +23,9 @@ export const Movies = () => {
   }, [searchQuery]);
 
   return (
-    <StyledMain>
+    <>
       <Searchbar onSubmit={setSearchParams} />
       {!!movies.length && <MovieList movies={movies} />}
-    </StyledMain>
+    </>
   );
 };
