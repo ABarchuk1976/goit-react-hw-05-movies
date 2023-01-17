@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { fetchReviewsByID } from 'components/services/common-api.service';
 import { Section } from 'components/SharedLayout/SharedLayout.styled.js';
-import { StyledText } from 'pages/MovieDetails.styled';
+import { StyledText } from '../MovieDetails.styled';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -21,7 +21,7 @@ const Reviews = () => {
           }))
         )
       )
-      .catch(console.log('Error exception'));
+      .catch(error => console.error(error));
   }, [movieId]);
 
   return (

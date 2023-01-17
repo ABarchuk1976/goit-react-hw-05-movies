@@ -3,7 +3,6 @@ import { fetchAPIMovies } from 'components/services/common-api.service.js';
 
 export const useFetchMovies = (action, query = '') => {
   const [movies, setMovies] = useState([]);
-  console.log('Params: ', action, query);
 
   useEffect(() => {
     fetchAPIMovies(action, query).then(({ results }) => {

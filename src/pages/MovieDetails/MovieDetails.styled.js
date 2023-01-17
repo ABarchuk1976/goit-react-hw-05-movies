@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledMovieCard = styled.article`
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px 1fr;
   max-width: 1600px;
-  margin: 1rem auto 0 auto;
+  margin: 1rem auto;
 `;
 
-export const StyledPoster = styled.aside`
-  width: 500px;
+export const StyledPoster = styled.div`
   height: fit-content;
 `;
 

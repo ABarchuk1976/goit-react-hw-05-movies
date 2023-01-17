@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { fetchCastByID } from 'components/services/common-api.service';
 import { Section } from 'components/SharedLayout/SharedLayout.styled.js';
-import { StyledText } from 'pages/MovieDetails.styled';
+import { StyledText } from '../MovieDetails.styled';
 import { API_IMG_POSTER } from 'components/constants/api.constants';
 
 import noImage from 'components/constants/no_image.jpg';
@@ -12,7 +12,6 @@ const Cast = () => {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
 
-  console.log('Cast: ', noImage);
   useEffect(() => {
     if (!movieId) return;
 
@@ -25,7 +24,6 @@ const Cast = () => {
               ? API_IMG_POSTER + profile_path
               : noImage;
 
-            console.log(imgURL);
             return {
               castName,
               character,
@@ -34,7 +32,7 @@ const Cast = () => {
           })
         )
       )
-      .catch(console.log('Error exception'));
+      .catch(error => console.error(error));
   }, [movieId]);
 
   return (

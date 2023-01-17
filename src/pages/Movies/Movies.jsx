@@ -6,7 +6,7 @@ import { fetchAPIMovies } from 'components/services/common-api.service';
 import { toast } from 'react-toastify';
 import MovieList from 'components/MovieList';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') ?? '';
   const [movies, setMovies] = useState([]);
@@ -25,7 +25,9 @@ export const Movies = () => {
   return (
     <>
       <Searchbar onSubmit={setSearchParams} />
-      {!!movies.length && <MovieList movies={movies} />}
+      {!!movies.length && <MovieList movies={movies} path={''} />}
     </>
   );
 };
+
+export default Movies;

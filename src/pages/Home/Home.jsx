@@ -4,7 +4,7 @@ import { fetchAPIMovies } from 'components/services/common-api.service';
 import MovieList from 'components/MovieList';
 import { StyledMain } from 'components/SharedLayout/SharedLayout.styled';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,9 @@ export const Home = () => {
 
   return (
     <StyledMain>
-      <MovieList movies={movies} />
+      <MovieList movies={movies} path={'movies/'} />
     </StyledMain>
   );
 };
+
+export default Home;

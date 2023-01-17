@@ -14,7 +14,7 @@ import {
 
 import noImage from 'components/constants/no_image.jpg';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [details, setDetails] = useState({});
   const { movieId } = useParams();
 
@@ -26,17 +26,17 @@ export const MovieDetails = () => {
         ({
           title,
           release_date,
-          popularity,
+          vote_average,
           overview,
           genres,
           tagline,
           poster_path,
         }) => {
           const year = release_date.substring(0, 4);
-          const userScore = Math.round(popularity) + '%';
+          const userScore = Math.round(vote_average * 10) + '%';
           const genreList = genres.map(genre => genre['name']).join(' ');
           const imgURL = poster_path ? API_IMG_POSTER + poster_path : noImage;
-          console.log('Path: ', imgURL);
+
           return setDetails({
             title,
             year,
@@ -59,7 +59,7 @@ export const MovieDetails = () => {
       <button type="button">&#8592; Go back</button>
       <StyledMovieCard>
         <StyledPoster>
-          <img src={imgURL} alt={tagline} width="200" />
+          <img src={imgURL} alt={tagline} />
         </StyledPoster>
         <StyledDetails>
           <StyledMovieTitle>
@@ -84,7 +84,9 @@ export const MovieDetails = () => {
           </li>
         </ul>
       </StyledAdditional>
-      <Outlet id={movieId} />
+      <Outlet />
     </>
   );
 };
+
+export default MovieDetails;

@@ -17,7 +17,6 @@ export const fetchAPIMovies = async (action, search = '') => {
   try {
     const resolve = await axios.get(URLString);
 
-    console.log(resolve.status);
     if (resolve.status !== 200 || !resolve) {
       throw new Error('Service is temporarily unavailable .');
     }
@@ -32,7 +31,6 @@ export const fetchAPIByID = async movieId => {
   try {
     const resolve = await axios.get(URLString);
 
-    console.log(resolve.status);
     if (resolve.status !== 200 || !resolve) {
       throw new Error('Service is temporarily unavailable .');
     }
@@ -47,7 +45,6 @@ export const fetchReviewsByID = async movieId => {
   try {
     const resolve = await axios.get(URLString);
 
-    console.log(resolve);
     if (resolve.status !== 200 || !resolve) {
       throw new Error('Service is temporarily unavailable .');
     }
@@ -62,9 +59,6 @@ export const fetchCastByID = async movieId => {
   try {
     const resolve = await axios.get(URLString);
 
-    console.log(resolve);
-
-    console.log(resolve.status);
     if (resolve.status !== 200 || !resolve) {
       throw new Error('Service is temporarily unavailable .');
     }
