@@ -9,17 +9,21 @@ import {
 
 const SharedLayout = () => {
   return (
-    <Section>
-      <StyledHeader>
-        <nav>
-          <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/movies">Movies</StyledLink>
-        </nav>
-      </StyledHeader>
-      <StyledMain>
-        <Outlet />
-      </StyledMain>
-    </Section>
+    <>
+      <Section>
+        <StyledHeader>
+          <nav>
+            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/movies">Movies</StyledLink>
+          </nav>
+        </StyledHeader>
+      </Section>
+      <Section>
+        <StyledMain>
+          <Outlet />
+        </StyledMain>
+      </Section>
+    </>
   );
 };
 

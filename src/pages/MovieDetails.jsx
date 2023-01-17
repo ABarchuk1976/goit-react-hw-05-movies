@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import {
-  fetchAPIByID,
-  fetchCastByID,
-  fetchReviewsByID,
-} from 'components/services/common-api.service';
+import { Link, useParams, Outlet } from 'react-router-dom';
+import { fetchAPIByID } from 'components/services/common-api.service';
 import { API_IMG_POSTER } from 'components/constants/api.constants.js';
 import {
   StyledMovieCard,
@@ -16,11 +12,11 @@ import {
   StyledAdditional,
 } from './MovieDetails.styled.js';
 
+import noImage from 'components/constants/no_image.jpg';
+
 export const MovieDetails = () => {
   const [details, setDetails] = useState({});
   const { movieId } = useParams();
-
-  console.log(movieId);
 
   useEffect(() => {
     if (!movieId) return;
@@ -35,32 +31,35 @@ export const MovieDetails = () => {
           genres,
           tagline,
           poster_path,
-        }) =>
-          setDetails({
+        }) => {
+          const year = release_date.substring(0, 4);
+          const userScore = Math.round(popularity) + '%';
+          const genreList = genres.map(genre => genre['name']).join(' ');
+          const imgURL = poster_path ? API_IMG_POSTER + poster_path : noImage;
+          console.log('Path: ', imgURL);
+          return setDetails({
             title,
-            year: release_date.substring(0, 4),
-            userScore: Math.round(popularity) + '%',
+            year,
+            userScore,
             overview,
-            genreList: genres.map(genre => genre['name']).join(' '),
+            genreList,
             tagline,
-            imgURL: API_IMG_POSTER + poster_path,
-          })
+            imgURL,
+          });
+        }
       )
-      .catch(console.log('Error exception'));
+      .catch(error => console.log(error.message));
   }, [movieId]);
 
   const { title, year, userScore, overview, genreList, tagline, imgURL } =
     details;
-
-  console.log(year);
-  // const year =
 
   return (
     <>
       <button type="button">&#8592; Go back</button>
       <StyledMovieCard>
         <StyledPoster>
-          <img src={imgURL} alt={tagline} />
+          <img src={imgURL} alt={tagline} width="200" />
         </StyledPoster>
         <StyledDetails>
           <StyledMovieTitle>
@@ -85,6 +84,7 @@ export const MovieDetails = () => {
           </li>
         </ul>
       </StyledAdditional>
+      <Outlet id={movieId} />
     </>
   );
 };
