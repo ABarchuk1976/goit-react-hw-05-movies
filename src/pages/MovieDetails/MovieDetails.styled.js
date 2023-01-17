@@ -1,4 +1,20 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const StyledLinkBack = styled(Link)`
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  background-color: #a6a6a6;
+  color: black;
+  :hover {
+    background-color: #999999;
+  }
+`;
 
 export const StyledMovieCard = styled.article`
   display: grid;

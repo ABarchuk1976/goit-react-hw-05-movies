@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams, Outlet } from 'react-router-dom';
+import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
 import { fetchAPIByID } from 'components/services/common-api.service';
 import { API_IMG_POSTER } from 'components/constants/api.constants.js';
 import {
@@ -10,6 +10,7 @@ import {
   StyledMovieSubtitle,
   StyledText,
   StyledAdditional,
+  StyledLinkBack,
 } from './MovieDetails.styled.js';
 
 import noImage from 'components/constants/no_image.jpg';
@@ -17,6 +18,9 @@ import noImage from 'components/constants/no_image.jpg';
 const MovieDetails = () => {
   const [details, setDetails] = useState({});
   const { movieId } = useParams();
+  const location = useLocation();
+
+  console.log('location: ', location.state);
 
   useEffect(() => {
     if (!movieId) return;
@@ -56,7 +60,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <button type="button">&#8592; Go back</button>
+      <StyledLinkBack to={location.state.from}>&#8592; Go back</StyledLinkBack>
       <StyledMovieCard>
         <StyledPoster>
           <img src={imgURL} alt={tagline} />

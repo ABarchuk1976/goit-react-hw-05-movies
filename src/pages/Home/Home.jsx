@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { API_ACTIONS } from 'components/constants/api.constants.js';
 import { fetchAPIMovies } from 'components/services/common-api.service';
 import MovieList from 'components/MovieList';
-import { StyledMain } from 'components/SharedLayout/SharedLayout.styled';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -13,11 +12,7 @@ const Home = () => {
     });
   }, []);
 
-  return (
-    <StyledMain>
-      <MovieList movies={movies} path={'movies/'} />
-    </StyledMain>
-  );
+  return <MovieList movies={movies} path={'movies/'} />;
 };
 
 export default Home;
