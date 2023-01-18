@@ -19,8 +19,9 @@ const MovieDetails = () => {
   const [details, setDetails] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
-
-  console.log('location: ', location.state);
+  const [goBack] = useState(() => {
+    return location.state?.from ?? '/movies';
+  });
 
   useEffect(() => {
     if (!movieId) return;
@@ -60,7 +61,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <StyledLinkBack to={location.state.from}>&#8592; Go back</StyledLinkBack>
+      <StyledLinkBack to={goBack}>&#8592; Go back</StyledLinkBack>
       <StyledMovieCard>
         <StyledPoster>
           <img src={imgURL} alt={tagline} />

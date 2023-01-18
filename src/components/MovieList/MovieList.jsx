@@ -1,10 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const MovieList = ({ movies, path }) => {
   const location = useLocation();
   const additionalPath = path ? `${path}/` : '';
-
-  console.log('Location at MovieList: ', location);
 
   return (
     <ul>
@@ -19,4 +18,13 @@ const MovieList = ({ movies, path }) => {
   );
 };
 
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  path: PropTypes.string,
+};
 export default MovieList;
