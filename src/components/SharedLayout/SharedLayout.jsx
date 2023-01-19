@@ -1,3 +1,4 @@
+import Loader from 'components/Loader/index.js';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -21,7 +22,7 @@ const SharedLayout = () => {
       </Section>
       <Section>
         <StyledMain>
-          <Suspense>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </StyledMain>

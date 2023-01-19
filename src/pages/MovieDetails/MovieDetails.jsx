@@ -2,6 +2,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
 import { fetchAPIByID } from 'components/services/common-api.service';
 import { API_IMG_POSTER } from 'components/constants/api.constants.js';
+import Loader from 'components/Loader/index.js';
 import {
   StyledMovieCard,
   StyledPoster,
@@ -22,10 +23,12 @@ const MovieDetails = () => {
   const [goBack] = useState(() => {
     return location.state?.from ?? '/movies';
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!movieId) return;
 
+    setIsLoading(true);
     fetchAPIByID(movieId)
       .then(
         ({
@@ -53,7 +56,8 @@ const MovieDetails = () => {
           });
         }
       )
-      .catch(error => console.log(error.message));
+      .catch(error => console.log(error.message))
+      .finally(setIsLoading(false));
   }, [movieId]);
 
   const { title, year, userScore, overview, genreList, tagline, imgURL } =
@@ -61,6 +65,7 @@ const MovieDetails = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <StyledLinkBack to={goBack}>&#8592; Go back</StyledLinkBack>
       <StyledMovieCard>
         <StyledPoster>
@@ -89,7 +94,7 @@ const MovieDetails = () => {
           </li>
         </ul>
       </StyledAdditional>
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>
