@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
 import { fetchAPIByID } from 'components/services/common-api.service';
 import { API_IMG_POSTER } from 'components/constants/api.constants.js';
@@ -89,7 +89,9 @@ const MovieDetails = () => {
           </li>
         </ul>
       </StyledAdditional>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

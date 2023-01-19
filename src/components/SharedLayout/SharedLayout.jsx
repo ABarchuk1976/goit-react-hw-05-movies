@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import {
@@ -20,7 +21,9 @@ const SharedLayout = () => {
       </Section>
       <Section>
         <StyledMain>
-          <Outlet />
+          <Suspense>
+            <Outlet />
+          </Suspense>
         </StyledMain>
       </Section>
     </>
