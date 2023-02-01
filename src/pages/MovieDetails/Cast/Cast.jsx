@@ -6,6 +6,7 @@ import Loader from 'components/Loader';
 import { fetchCastByID } from 'components/services/common-api.service';
 import { Section } from 'components/SharedLayout/SharedLayout.styled.js';
 import { StyledText } from '../MovieDetails.styled';
+import { CastList, CastItem } from './Cast.styled';
 import { API_IMG_POSTER } from 'components/constants/api.constants';
 
 import noImage from 'components/constants/no_image.jpg';
@@ -44,15 +45,15 @@ const Cast = () => {
     <>
       {isLoading && <Loader />}
       <Section>
-        <ul>
+        <CastList>
           {cast.map(({ imgURL, castName, character }) => (
-            <li key={castName}>
-              <img src={imgURL} alt={castName} width="100" />
+            <CastItem key={castName}>
+              <img src={imgURL} alt={castName} width="100%" />
               <StyledText>{castName}</StyledText>
               <StyledText>{character}</StyledText>
-            </li>
+            </CastItem>
           ))}
-        </ul>
+        </CastList>
       </Section>
     </>
   );
